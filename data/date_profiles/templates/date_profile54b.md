@@ -1,0 +1,3 @@
+I am looking for a girl, whom I can get [lost in;conversation with], just as easily as we can share one of those [moments of;comfortable silence] [in each others';arms]. I love to [laugh and;joke around]. [My job is;awesome], but I know when I come home that [this is where;my priorities and true happiness are].
+
+I want to [share my;passions] with you and [expect the;same from you]. In fact, hoping to explore new ones we find together. [If you are;Christian], [enjoy;children], and [enjoy the;outdoors], we already have a lot in common. One of my favorite Psalms has [a verse that;says], "Delight yourself in the Lord and he shall give you [the desires of;your heart]." I am hoping that together we can live that verse [well into;our golden years].

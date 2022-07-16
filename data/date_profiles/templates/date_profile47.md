@@ -1,0 +1,1 @@
+Bill Murray Movies. Adventures. Fancy Cheese. [If you like;any of these three things], we’ll get along great. [If you like;all three], you could just be [the love of;my life]. Either way, I’m a fun-loving girl who’s new to the city and looking to [meet some;nice people]. If you’d like to get together sometime, [send me your;favorite Bill Murray quote] and [we can start;chatting]

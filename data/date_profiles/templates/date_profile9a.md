@@ -1,0 +1,5 @@
+First of all [I am not;your average guy]. There are several [things that make me;unique]. One thing that make me unique is that I am [an avid;collector of memories]. You'll [just have to;ask] if you want to know more about that. 
+
+Also, I've [been told;I'm a gentleman] and hopeless romantic, yes we do exist! Therefore my motto in life has always been and will always be "Quality vs. Quantity." So, ladies, I am not on here [looking for just;sex] or a "friends with benefits". As my profile says, [I am looking;for a relationship]. That doesn't mean [being attached;at the hip] but seeing one another often. Currently live and work in the Denver area as a stock broker. Love to play ball, go [hiking in;the woods], and pretty much anything that [keeps me;active]. Also enjoy [going to;the opera] and looking for [new places to;eat]. On the other hand, a night in on the couch [cuddled up with;that special someone] watching a movie would be just as nice too.
+
+P.S. [If I;send you a message and you happen to read it], please either let me know. [Even if;you are not interested], just say so. [You won't;offend me], I promise.

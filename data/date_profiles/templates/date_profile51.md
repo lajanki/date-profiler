@@ -1,0 +1,3 @@
+Sometimes I feel like [I’m an;amature everything]. I cook, road bike, paint occasionally, blog even less often, love snow sports, and am always looking to try new things and learn new things.
+
+But [I never really;master anything]! I like to think [that makes my;resume diverse], but you can [give me a;hard time about it] if you’d like. [If you can;quote Neil Gaiman], [keep up with;me on a road bike], and show me something I haven’t tried before [you should definitely;message me].

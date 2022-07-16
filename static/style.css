@@ -1,0 +1,57 @@
+#profile {
+	font-size: 16px;
+	margin-top: 20px;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+#profile h1 {
+	font-size: 28px;
+}
+
+#letter-signature {
+	font-family: cursive;
+	font-style: italic;
+}
+
+#left-margin {
+	margin-top: 50px;
+	padding-left: 20px;
+	/*height: 80vh;*/
+}
+
+#right-margin {
+	margin-top: 140px;
+	padding-right: 20px;
+	/*height: 80vh;*/
+}
+
+div.page-header {
+	margin-top: 25px;
+	margin-left: 100px;
+}
+
+ul.nav {
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-bottom: 25px;
+}
+
+.card {
+	background-color: rgba(147, 163, 239, 0.15);
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+img.sidebar {
+	margin-bottom: 50px;
+}
+
+#loader {
+	margin-bottom: 25px;
+}
+
+div.spinner-border {
+	width: 4rem;
+	height: 4rem;
+}

@@ -1,0 +1,5 @@
+I really don't want to bore you to tears by [writing about what;a great catch I am]. I'm sure you've read many dating profiles that have told you they are perfect for you! [I've always believed;that actions speak louder than words] don't you think? It would be great to meet [face to face for;coffee] and see where it goes from there. 
+
+I'm not scared to let you know that [I have;flaws]. I'm a perfectionist and can use a whole package of good paper [trying to;handwrite something]. With the internet world taking over, it's nice to write an actual [handwritten letter to;family and friends]. I know that [recycling is;huge] so don't worry, I do use the paper I've scrapped for other things! You would think [because I'm a;perfectionist] that I [have the perfect;job]. That, I have not perfected yet. [I'm still;looking for my true calling] and am taking part-time [classes at;the University] after work. 
+
+If you are honest and are looking to [meet someone for;casual dating], [make sure to;email me]. I am [looking to;date] but if it leads to something more, it's always a good thing. Don't forget to [tell me something about;yourself]!

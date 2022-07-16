@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+	<head>
+		<title>Date profiles</title>
+		<meta charset="UTF-8" />
+		<meta name="descriptions" content="Date profiles written by Google Search autocomplete">
+		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- jQuery, Popper and Bootstrap -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		
+		<script type=text/javascript>
+			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+		<script type=text/javascript>
+
+			// Bind callbacks to the generate button as well as the two nav bar options
+			$(document).ready(function() {
+				setDescription("date_profiles");  // load initial date profile on page load
+
+				// For the generate button determine whether to generate a date profile or a love letter
+				// based on which nav element is currently active
+				$("#generate_button").on("click", function() {
+					var text = $("a.nav-link.active")[0].innerText;
+					var category = (text == "Date profiles" ? "date_profiles" : "love_letters");
+					setDescription(category);
+				});
+				$("#nav-option-profile").on("click", function() {setDescription("date_profiles")} );
+			  	$("#nav-option-letter").on("click", function() {setDescription("love_letters")} );
+			});
+
+			function setDescription(type) {
+				/**
+				 * Request either a new date profile or love letter and display it on the main container.
+				 * @param {string} type which content to display should match the _folder_ name: date_profiles|love_letters
+				 */ 
+				$.ajax({
+					beforeSend: function(request) {
+						// Set custom header for backend
+						request.setRequestHeader("X-Button-Callback", "true");
+						// Hide profile content and display the loader
+						$("#profile").text("");
+						$("#loader").show();
+					},
+					dataType: "json",
+					url: $SCRIPT_ROOT + "/_generate?type=" + type,
+					success: function(data) {
+						// Set profile content and hide loader
+						$("#loader").hide();
+						$("#profile").html(data.html);
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						$("#profile").html("<h1>Something went wrong, try again</h1>");
+						$("#loader").hide();
+					}
+				});
+
+				return false;
+			}
+
+		</script>
+
+	</head>
+	<body>
+
+		<div class="container-fluid">
+
+			<div class="row">
+				<!-- left margin -->
+				<div class="hidden-xs col-md-2" id="left-margin">
+					<img class="sidebar" src="./static/img/profile_base.png" style="margin-bottom:5px; width:75%">
+					<img class="sidebar" src="./static/img/down-g5ad357d13_640.png" style="margin-left:33%; height:5%">
+					<img class="sidebar" src="./static/img/google_search_up_in.png" style="margin-bottom:10px; width:100%">
+					<img class="sidebar" src="./static/img/down-g5ad357d13_640.png" style="margin-left:33%; margin-bottom:10px; height:5%">
+					<img class="sidebar" src="./static/img/profile_filled_short.png" width="70%">
+				</div>
+	
+	
+				<!-- middle section for content -->
+				<div class="col-xs-12 col-md-8">
+					<div class="page-header">
+						 <h1>Date profiler</h1> 
+						 <p>Dating profiles and love letters filled by by Google Search autocomplete</p>
+					</div>
+	
+					<!-- navbar buttons for similar sites: love letters and Steam game descriptions -->
+					<ul class="nav nav-tabs">
+						<li class="nav-item">
+							<a class="nav-link active" id="nav-option-profile" href="#" data-toggle="tab">Date profiles</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="nav-option-letter" href="#" data-toggle="tab">Love letters</a>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Other</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="https://game-descriptor-dot-webhost-common.appspot.com/"><img src="./static/img/joystick_small.png">Videogame descriptor</a>
+							</div>
+						</li>
+					</ul>
+
+
+					<!-- container for the profile -->
+					<div class="card">
+						<div class="card-body">
+							<div id="profile"></div>
+
+							<!-- A spinning loader to be displayed while new profile is being loaded -->
+							<div class="text-center" id="loader">
+								<div class="spinner-border text-primary" role="status">
+									<span class="sr-only">Loading...</span>
+								</div>
+							</div>
+
+							<div class="row justify-content-center">
+								<button type="submit" class="btn btn-primary" id="generate_button">Generate</button>
+							</div>
+						</div>
+					</div>
+	
+					
+					<!-- hidden div for sources -->
+					<hr />
+					<p>
+						<a data-toggle="collapse" href="#source-list" role="button" aria-expanded="false" aria-controls="collapseExample">
+							Sources
+						</a>
+					</p>
+					<div class="collapse" id="source-list">
+						templates<br/>
+						<a href='http://www.pickuplinesgalore.com/online-dating/profiles.html'>http://www.pickuplinesgalore.com/online-dating/profiles.html</a><br/>
+						<a href='http://www.sampleonlinedatingprofiles.com/sample-men-profiles/about-me-section/general'>http://www.sampleonlinedatingprofiles.com/sample-men-profiles/about-me-section/general</a><br/>
+						<a href='https://bridgetofthenorth.com/2013/05/22/pimping-your-online-dating-profile-examples-of-what-to-what-not-to-write-in-your-profile/'>https://bridgetofthenorth.com/2013/05/22/pimping-your-online-dating-profile-examples-of-what-to-what-not-to-write-in-your-profile/</a><br/>
+						<a href='http://onlinedatingparadox.com/2009/07/examples-of-good-male-dating-profiles.html'>http://onlinedatingparadox.com/2009/07/examples-of-good-male-dating-profiles.html</a><br/>
+						<a href='http://www.writeexpress.com/love.htm'>http://www.writeexpress.com/love.htm</a><br/>
+						<a href='https://www.edatingdoc.com/online-dating-profile-examples/'>https://www.edatingdoc.com/online-dating-profile-examples/</a><br/>
+						<a href='https://www.everydayknow.com/funny-online-dating-profile-examples/'>https://www.everydayknow.com/funny-online-dating-profile-examples/</a><br/>
+						<a href='https://lovebondings.com/best-dating-profile-examples'>https://lovebondings.com/best-dating-profile-examples</a><br/>
+						<a href='https://www.luvze.com/online-dating-profile-headlines-examples/'>https://www.luvze.com/online-dating-profile-headlines-examples/</a><br/>
+						<br/><br/>
+
+						titles<br/>
+						<a href='http://www.datingsiteover50.com/blog/quotes-dating-profile-headlines.html'>http://www.datingsiteover50.com/blog/quotes-dating-profile-headlines.html</a><br/>
+						<a href='http://www.theattractionforums.com/online-game-ims/100069-huge-list-profile-headlines.html'>http://www.theattractionforums.com/online-game-ims/100069-huge-list-profile-headlines.html</a><br/>
+						<a href='https://www.luvze.com/online-dating-profile-headlines-examples/'>https://www.luvze.com/online-dating-profile-headlines-examples/</a>
+						<br/><br/>
+
+						icons<br/>
+						<a href='http://glyphicons.com/'>http://glyphicons.com/</a><br/>
+						<a href='http://www.favicon-generator.org/search/---/Heart'>http://www.favicon-generator.org/search/---/Heart</a>
+						<br/><br/>
+						
+						images<br/>
+						<a href='https://pixabay.com/'>https://pixabay.com/</a>
+					</div>
+
+				</div>
+	
+				<!-- right margin -->
+				<div class="hidden-xs col-md-2" id="right-margin">
+					<img class="sidebar" src="./static/img/hearts-37308_1280.png" width="70%" style="margin-bottom:100px">
+					<img class="sidebar" src="./static/img/couple-g471f12506_640.png" width="70%" style="margin-bottom:100px">
+					<img class="sidebar" src="./static/img/rose_1280.png" width="40%" style="margin-left:20px">
+				</div>
+	
+			<!-- row -->
+			</div>
+	
+		<!-- container -->
+		</div>
+
+
+    </body>
+</html>
+
+
+
+
+

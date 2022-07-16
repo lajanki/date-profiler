@@ -1,0 +1,5 @@
+[I am a working;professional] who is looking for someone mature like me. [You must have a;job ]and [your own;place]. While I take work very seriously and put in 110% at the office, I work hard and play hard. In terms of style, [I am not much of a;t-shirt and jeans kind of girl]. [I always dress;to impress], but on weekends I [let my hair;down] a little more.
+
+[I cannot be;with someone who does not have a job or any career aspirations]. I am [attracted to;people who have their eye on the prize], [people who know;what they want and do what it takes to make things happen].
+
+I am looking for someone who shares my goals, values, and aspirations in life. [We do not need to;have everything in common], but it is important to me that you are [passionate about;something]. I want to be in a relationship with [someone who thinks;about the future ]and knows where they want to be 5, 10, and even 20 years from now. I am interested in someone who can bring out the best in me and who will always [strive to be;better]. If you think that you can challenge me to be the best version of myself and are looking for [someone who can;do this for you], then let’s talk

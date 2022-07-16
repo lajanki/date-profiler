@@ -1,0 +1,11 @@
+# You Mean Everything To Me
+
+The months and the years are slipping by and I tell you often enough that I love you, that my life would not be [complete without;you] anymore. I don't know, though, if I've really told you how loving you has improved [the quality of;my life] in so many ways. For one thing, I'm sure I wouldn't have gotten this last promotion [without your;encouragement]. I knew [I had the;experience] and the know-how, but [I just wasn't;bold] enough to step forward when the position first became available. It was [your faith in;me] and in my abilities that actually gave me the nerve to [apply for;it]. [Now that I;have it], I use so much more of my education and experience, and my [self-esteem has;gotten a real shot in the arm], too--[all thanks to;you].
+
+Loving you also means I have the [opportunity to be;there for you] when you need me. I remember when you wanted to make a [proposal to;your project committee] and you needed to [practice on;an audience]. I learned a lot from hearing your great ideas on [improving efficiency and;productivity] in an advertising department. I was glad you thought that trying out your [presentation on;me] helped [improve your;final draft]. When your proposal was accepted and the changes you suggested became a reality, your success was as much a boost to my ego as it was to yours.
+
+I wonder if you know how much I look forward to [the simple things we;share], like our talk fest over dinner [at the end of;a long workday]. It's a great stress reliever [to tell you;all the day's events] and listen to you [analyze why;this happened], or why that person behaved the way they did, and then speculate together on [how tomorrow will;line up]. On the weekends, [I enjoy;relaxing with you] and just [watching a;movie], critiquing [every aspect of;the production] like professional movie critics, making judgments on everything from the casting choices to [the quality of;the screenplay].
+
+I can't even imagine my life now [without all;the things] we enjoy together--[our passionate;lovemaking], luxurious bubble baths, and lazy sleep-ins on Sunday morning. [Through the days and;through the nights], thank you for always being there; [I'll always be;there for you]. I want you to know [how much I;truly love and appreciate you], Sweetheart. [You mean;everything to me].
+
+[I am forever;yours].
