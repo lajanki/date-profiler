@@ -1,6 +1,6 @@
 
 service: date-profiler
-runtime: python37
+runtime: python310
 entrypoint: gunicorn -b :$PORT main:app --timeout 600
 env_variables:
   ENV: prod
