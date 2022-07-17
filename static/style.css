@@ -17,13 +17,11 @@
 #left-margin {
 	margin-top: 50px;
 	padding-left: 20px;
-	/*height: 80vh;*/
 }
 
 #right-margin {
 	margin-top: 140px;
 	padding-right: 20px;
-	/*height: 80vh;*/
 }
 
 div.page-header {
@@ -41,10 +39,6 @@ ul.nav {
 	background-color: rgba(147, 163, 239, 0.15);
 	margin-left: 100px;
 	margin-right: 100px;
-}
-
-img.sidebar {
-	margin-bottom: 50px;
 }
 
 #loader {
