@@ -1,9 +1,0 @@
-# I'm Feeling A Little Crowded
-
-Oh, [how can;I say this] without you taking it the wrong way? We've been [seeing a lot of;each other lately], and [you've been;so sweet to me]. [Each time you;look at me with those big], blue eyes, [I want to;melt]. [Please don't;misunderstand]--I've enjoyed [the time we;have spent together]. You are funny, smart, and generous. But when I received your recent letter, I realized that [our relationship is;becoming too serious, too quickly for me]. [I need to date;at a slower pace right now].
-
-You need to know that [I have made a;commitment to myself] and to my parents that nothing would [get in the way of;my graduation]. Until then, [I want to enjoy;dating several guys on a casual basis], but not get tied down to anyone yet. I've really had to adopt this mindset of no long-term relationships for the moment or [I will never;be able to complete my degree]. Last year [I failed in;my resolve] and [entered into;a serious relationship]--only to have it and my grades crash. The readjustment process was too painful to repeat. I hope you can appreciate that. [I'm just not;ready]; it's the wrong season of my life.
-
-I hope you'll respect my request that we see each other less often and [feel free to;enter into other relationships yourself]. That will give our emotions [time to;settle down] and me time to graduate. That said, [I want to say;that I think you're a great guy]. [Do I want to;see you again]? Yes, but just not quite so often--maybe twice a month--and [without the;expectation of immediate commitment]. [I've had a;lot of fun with you]. But [I have to;maintain tunnel vision] until graduation, and so I close this letter now and [make my way to;the books]. I'm really sorry if this hurts you. If you still want to see me, [why don't you;could call me in a couple of weeks] and we could plan something. Until then, [let's give it;a breather].
-
-[Thanks for;understanding].

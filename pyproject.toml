@@ -1,0 +1,20 @@
+[project]
+name = "date-profiler"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.13.3",
+    "flask>=3.1.0",
+    "google-cloud-storage>=3.1.0",
+    "gunicorn>=23.0.0",
+    "markdown>=3.7",
+    "simplejson>=3.20.1",
+    "termcolor>=2.5.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+]

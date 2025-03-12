@@ -1,5 +1,0 @@
-cron:
-- description: "date-profiler: Weekly autocomplete cache refresh"
-  url: /_refresh
-  schedule: every monday 09:00
-  target: date-profiler

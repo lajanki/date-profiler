@@ -1,5 +1,0 @@
-About Me: [I’m easy;going], [a little bit;lazy], but very competitive. I’m a tiny bit sensitive but [I get over;anything] pretty quickly. I am so good at cooking that [I should be;on Masterchef]. Okay, maybe not that good, but pretty damn close. I make a killer grilled cheese. I like riding my bike more than I like [driving my;car]. [I take time;when I do things], so if you like to rush don’t bother matching up with me. I believe in [having a;free spirit] and [keeping things;simple].
-
-I’m definitely a ‘[take no;shit from anyone]’ type of person. I do [things by;my own book] and [in my own;time].
-
-What I’m Looking For: [Someone who isn’t;crazy]. That is the number one thing. A kind, caring soul who can be [open minded about;the things they do in life]. Must like to read. I like [people who;have goals in life]. So if you can’t [plan for;the next five years] [you know where;the ‘next button’ is].

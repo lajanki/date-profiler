@@ -1,5 +1,0 @@
-About Me: Please read with [a tinge of;sarcasm], thanks
-
-I’m Josh. I am that intelligent, caring, kind guy that your parents always told you to go for. [You friends will;absolutely adore me] and your ex-boyfriends will moderately show [distaste for;me]. [I’m like;Adam Levine], but [without all the;tattoos], the womanizing and the [millions of;bucks]. Ok, actually no, I’m more like the Dalai Lama, with Obama swag and a Morgan Freeman persona. I love spending times at Bat Mitzvahs and Quinceaneras on the weekends. Yup, [I’m very;culturally diverse ]like that. I love writing, reading, cooking, pianos, [exploring the;wilderness], jumping jacks and [eating;cereal]. [I’ve been to;Budapest], Paris, Japan, South Korea, Africa and Florida (basically a foreign country).
-
-Send me a message if you are interested in doing any of the stuff I listed above.

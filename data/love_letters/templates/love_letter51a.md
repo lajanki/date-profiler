@@ -1,7 +1,0 @@
-# We've Come To A Standstill
-
-[I know that;you said before that you needed more time], and [I have tried to;respect that]. But we've been seeing each other (on occasion) for almost ten months now, and I'm just [not sure where;this relationship is going]--[if it's;going anywhere anymore]. When we first [started going;out], [we seemed to;have so much in common], and I thought you really cared about me. [Was I;wrong], or have your feelings changed somehow?
-
-[I hate to think;that you've been leading me along], but I'm concerned because you still aren't [willing to make;a strong commitment] to our relationship. I've tried to express the [feelings that;I have for you], but [you keep;putting me off]. I believed that we were [heading in;the same direction]. But I am [ready to;plan my future]--am I wrong to still hope that you will be a [permanent part of;it] one day? You always [talk about your;family] and how much they mean to you--don't you ever think these days about [having a;family] of your own?
-
-We need to talk. [You must know;how much I've come to care about you]. I love you--there, I said it. [Is there any hope;that you might love me too]? I don't think I can go on any longer like this. [I need to know where;you're coming from]. If you don't think you can ever feel the same way for me that I do for you, I need to know. I love you, I want you, I need you--but [I can't wait;forever]. Please say that [we can get;together soon] and talk.

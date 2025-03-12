@@ -3,7 +3,7 @@
 
 <html lang="en">
 	<head>
-		<title>Date Profiler</title>
+		<title>Date profiles</title>
 		<meta charset="UTF-8" />
 		<meta name="descriptions" content="Date profiles written by Google Search autocomplete">
 		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -26,29 +26,24 @@
 
 		<script type=text/javascript>
 
-			// Bind callbacks to the generate button as well as the two nav bar options
+			// Bind AJAX callbacks to the generate button as well as the two nav bar options
 			$(document).ready(function() {
-				setDescription("date_profiles");  // load initial date profile on page load
+				setDescription("date_profile");  // make an initial AJAX call on page load
 
 				// For the generate button determine whether to generate a date profile or a love letter
 				// based on which nav element is currently active
 				$("#generate_button").on("click", function() {
 					var text = $("a.nav-link.active")[0].innerText;
-					var category = (text == "Date profiles" ? "date_profiles" : "love_letters");
+					var category = (text == "Date profiles" ? "date_profile" : "love_letter");
 					setDescription(category);
 				});
-				$("#nav-option-profile").on("click", function() {setDescription("date_profiles")} );
-			  	$("#nav-option-letter").on("click", function() {setDescription("love_letters")} );
+				$("#nav-option-profile").on("click", function() {setDescription("date_profile")} );
+			  	$("#nav-option-letter").on("click", function() {setDescription("love_letter")} );
 			});
 
 			function setDescription(type) {
-				/**
-				 * Request either a new date profile or love letter and display it on the main container.
-				 * @param {string} type which content to display should match the _folder_ name: date_profiles|love_letters
-				 */ 
 				$.ajax({
 					beforeSend: function(request) {
-						// Set custom header for backend
 						request.setRequestHeader("X-Button-Callback", "true");
 						// Hide profile content and display the loader
 						$("#profile").text("");
@@ -79,18 +74,18 @@
 			<div class="row">
 				<!-- left margin -->
 				<div class="hidden-xs col-md-2" id="left-margin">
-					<img class="sidebar" src="./static/img/profile_base.png" style="margin-bottom:5px">
-					<img class="sidebar" src="./static/img/down-g5ad357d13_640.png" style="margin-bottom:10px; margin-left:33%; height:5%">
-					<img class="sidebar" src="./static/img/google_search_up_in.png" style="margin-bottom:10px; width:100%">
-					<img class="sidebar" src="./static/img/down-g5ad357d13_640.png" style="margin-bottom:10px; margin-left:33%; height:5%">
-					<img class="sidebar" src="./static/img/profile_filled_short.png" width="70%">
+					<img class="sidebar" src="./static/img/letter_example.png" style="margin-bottom:5px; width:100%">
+					<img class="sidebar" src="./static/img/arrow.png" style="margin-left:33%; margin-bottom:10px">
+					<img class="sidebar" src="./static/img/google_search.png" style="margin-bottom:10px; width:100%">
+					<img class="sidebar" src="./static/img/arrow.png" style="margin-left:33%; margin-bottom:10px">
+					<img class="sidebar" src="./static/img/letter_example_finished.png" width="100%">
 				</div>
 	
 	
 				<!-- middle section for content -->
 				<div class="col-xs-12 col-md-8">
 					<div class="page-header">
-						 <h1>Date Profiler</h1> 
+						 <h1>Date profiler</h1> 
 						 <p>Dating profiles and love letters filled by by Google Search autocomplete</p>
 					</div>
 	
@@ -149,31 +144,30 @@
 						<a href='https://www.everydayknow.com/funny-online-dating-profile-examples/'>https://www.everydayknow.com/funny-online-dating-profile-examples/</a><br/>
 						<a href='https://lovebondings.com/best-dating-profile-examples'>https://lovebondings.com/best-dating-profile-examples</a><br/>
 						<a href='https://www.luvze.com/online-dating-profile-headlines-examples/'>https://www.luvze.com/online-dating-profile-headlines-examples/</a><br/>
-						<br/>
+						<br/><br/>
 
 						titles<br/>
 						<a href='http://www.datingsiteover50.com/blog/quotes-dating-profile-headlines.html'>http://www.datingsiteover50.com/blog/quotes-dating-profile-headlines.html</a><br/>
 						<a href='http://www.theattractionforums.com/online-game-ims/100069-huge-list-profile-headlines.html'>http://www.theattractionforums.com/online-game-ims/100069-huge-list-profile-headlines.html</a><br/>
-						<a href='https://www.luvze.com/online-dating-profile-headlines-examples/'>https://www.luvze.com/online-dating-profile-headlines-examples/</a><br/>
-						<br/>
+						<a href='https://www.luvze.com/online-dating-profile-headlines-examples/'>https://www.luvze.com/online-dating-profile-headlines-examples/</a>
+						<br/><br/>
 
 						icons<br/>
 						<a href='http://glyphicons.com/'>http://glyphicons.com/</a><br/>
-						<a href='http://www.favicon-generator.org/search/---/Heart'>http://www.favicon-generator.org/search/---/Heart</a><br/>
-						<br/>
+						<a href='http://www.favicon-generator.org/search/---/Heart'>http://www.favicon-generator.org/search/---/Heart</a>
+						<br/><br/>
 						
 						images<br/>
 						<a href='https://pixabay.com/'>https://pixabay.com/</a>
 					</div>
-					<img src="static/img/GitHub-Mark-32px.png" height="24" width="24"><a id="ghlink" href="https://github.com/lajanki/date-profiler"> GitHub/date-profiler</a>
 
 				</div>
 	
 				<!-- right margin -->
 				<div class="hidden-xs col-md-2" id="right-margin">
-					<img class="sidebar" src="./static/img/hearts-37308_1280.png" width="70%" style="margin-bottom:100px">
-					<img class="sidebar" src="./static/img/couple-g471f12506_640.png" width="70%" style="margin-bottom:100px">
-					<img class="sidebar" src="./static/img/rose_1280.png" width="40%" style="margin-left:20px">
+					<img class="sidebar" src="./static/img/heart_balloon_letter.png" width="60%">
+					<img class="sidebar" src="./static/img/heart_letter.png" width="60%">
+					
 				</div>
 	
 			<!-- row -->

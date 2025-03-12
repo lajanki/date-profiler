@@ -1,0 +1,5 @@
+On a Saturday night, you can usually find me curled up on the couch watching my favorite TV show. Instead of going to a bar or concert, my idea of fun is hanging out at home by myself or with my closest friends. My ideal date involves me cooking dinner, playing some Scrabble, and watching a classic movie.
+
+While I am a bit of a homebody, I like going out too. Quiet walks in the park are my jam and I like to hang out in my favorite bookstore. The library and my neighborhood coffee shop are some of my other favorite places to hang out.
+
+When I first meet someone, I can be a little bit shy, but I come out of my shell right away when it is the right person. If I am quiet for the first time, it is because I am being observant and taking everything in. My friends would say that my best attributes are that I am a loyal and thoughtful person.

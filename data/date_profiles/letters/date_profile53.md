@@ -1,0 +1,3 @@
+I want to meet someone who will introduce me to new things, adore (or put up with) my wacky moods and keep me in line. Very important: a woman whose profile does not include a shirtless photo or a photo of her with her car. Not my type. I am looking for a woman who is confident. Someone who likes to play but can keep it real. Not a player.
+
+I'm looking for someone who's intelligent and funny, beautiful and patient. Some who is loyal and makes me feel safe. I would like a woman who can surprise me every now and then. A woman who will support me, tell me if I'm wrong and will want me to do the same to her.

@@ -1,0 +1,5 @@
+Life it too short to not be out having fun. You will almost never find me home sitting on my couch and watching TV on a Friday night. I like to go out and go dancing and I also love to eat at the best restaurants in town. My friends like to say that I am always the life of the party and with me, there is never a dull moment.
+
+For me, the perfect partner can enjoy having a drink with me at the end of the night and when we feel like going out for the night, we can go dancing. I have never been one to shy away from the crowd and I love to sing karaoke, especially when it’s a fun duet. My favorite karaoke song to sing is Don’t Stop Believing by Journey. I’ve known all the words to that song since I was seven years old.
+
+I can show you a good time and while I like to have fun, I am definitely ready to settle down and find the right person. And while you are more than welcome to try and tame me, I hope you will be attracted to my outgoing and lively personality.
