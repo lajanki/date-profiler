@@ -12,11 +12,10 @@ import simplejson as json
 import markdown
 from bs4 import BeautifulSoup
 
-from content_generator import utils
+from content_generator import utils, gcs_utils
 
 
-suggest_url = "http://suggestqueries.google.com/complete/search"
-autocomplete_cache = utils.get_cached_autocomplete_suggestions()
+autocomplete_cache = gcs_utils.get_cached_autocomplete_suggestions()
 
 
 def generate_letter(type_):

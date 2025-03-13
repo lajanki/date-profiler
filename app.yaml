@@ -2,3 +2,6 @@
 service: date-profiler
 runtime: python312
 entrypoint: gunicorn -b :$PORT main:app --timeout 600
+env_variables:
+  GCS_BUCKET: "prod_date_profiler_data"
+  GCS_CACHE_FILE: "autocomplete_cache.json"

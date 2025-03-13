@@ -3,14 +3,11 @@ import json
 import glob
 import requests
 
-from google.cloud import storage
-
+from content_generator import gcs_utils
 
 
 BASE = os.path.join(os.path.dirname(__file__), "..")
-META_DELIM = ";"
-GCP_BUCKET = "wbh-gae-common-misc"
-GCP_CACHE_FILE = "date_profiler/autocomplete_cache.json"
+SUGGEST_URL = "http://suggestqueries.google.com/complete/search"
 
 
 def clean_autocomplete_suggestion(suggestion):
@@ -65,27 +62,13 @@ def split_metadata_token(token):
         prefix;blank
     Split such a line into the two pieces
     """
-    split = token.split(META_DELIM)
+    split = token.split(";")
     return split[0], split[1].strip()  # ensure no whitespace at the end of blank
-
-def get_cached_autocomplete_suggestions():
-	"""Fetch autocomplete suggesrion results from a Cloud Storage cache file."""
-	client = storage.Client()
-	bucket = client.get_bucket(GCP_BUCKET)
-	blob = bucket.get_blob(GCP_CACHE_FILE)
-	cache_string = blob.download_as_string()
-	cache = json.loads(cache_string)
-
-	return cache
 
 def refresh_and_upload_cache():
     """Refresh the suggestion cache and upload to Cloud Storage."""
     cache = refresh_suggestion_cache()
-
-    client = storage.Client()
-    bucket = client.get_bucket(GCP_BUCKET)
-    blob = bucket.get_blob(GCP_CACHE_FILE)
-    blob.upload_from_string(json.dumps(cache))
+    gcs_utils.upload_autocomplete_cache(cache)
 
 def refresh_suggestion_cache():
     """Refresh autocomplete cache file for every prefixes in metadata files (templates and titles).
@@ -118,12 +101,11 @@ def refresh_suggestion_cache():
     print("Refreshing cache file with {} prefixes".format(len(prefixes)))   
     totals = {}
     for q in prefixes:
-        suggest_url = "http://suggestqueries.google.com/complete/search"
         # Add a space to ensure the prefixes is fully contained in the resulting suggestions,
         # ie. "I love to" will also result in suggestions such as "I love you",
         # Whereas "I love to " keeps to orignal prefix in the response.
         query_string = q + " " 
-        r = requests.get(suggest_url, params={"client":"firefox", "q":query_string})
+        r = requests.get(SUGGEST_URL, params={"client":"firefox", "q":query_string})
 
         totals[q] = r.json()[1]  # first item in the response is the original query string, second is the set of suggestions.
                                  # Also, note that the key is without the trailing space
