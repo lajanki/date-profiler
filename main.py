@@ -15,7 +15,6 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-
 @app.route("/_generate")
 def generate_game_description():
     # Only respond, if a custom header was set
@@ -26,9 +25,8 @@ def generate_game_description():
 
     abort(500)
 
-
 @app.route("/_refresh")
-def refresh_suggeestion_cache():
+def refresh_suggestion_cache():
     # Only respond to cron request from App Engine
     # (The X- headers are stripped by App Engine when they originate from external sources)
     # https://cloud.google.com/appengine/docs/flexible/nodejs/scheduling-jobs-with-cron-yaml
