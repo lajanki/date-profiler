@@ -1,5 +1,4 @@
-from charset_normalizer import CharsetMatch
-from src import cache
+from content_generator import utils
 
 def test_keyword_cleanup():
     """Are selected keywords removed from list of keywords?"""
@@ -11,8 +10,7 @@ def test_keyword_cleanup():
         "girls only",
         "cupboard synonym"
     ]
-    c = cache.Cache()
-
+    
     expected = [
         "i feel you",
         "can i get butter",
@@ -20,4 +18,5 @@ def test_keyword_cleanup():
         "girls only",
         "cupboard"
     ]
-    assert set(c.clean(suggestions)) == set(expected)
+
+    assert set([utils.clean_autocomplete_suggestion(s) for s in suggestions]) == set(expected)
