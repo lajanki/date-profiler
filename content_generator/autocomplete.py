@@ -19,23 +19,30 @@ autocomplete_cache = gcs_utils.get_cached_autocomplete_suggestions()
 
 
 def generate_letter(type_):
-	"""Conveniance wrapper to fill_template: generates an autocompleted, randomly selected, date profile or
-	love letter.
+	"""Conveniance wrapper to fill_template: generates an autocompleted,
+	randomly selected, date profile or love letter.
+	Args:
+		type_ (str): type of content to generate either "date_profile" or "love_letter"
+	Returns:
+		dict: a dictionary containing the generated content as html and the template file used.
 	"""
-	# For date profiles, also add a title
 	if type_ == "date_profile":
 		profiles = glob.glob(os.path.join("data", "date_profiles", "letters", "*.md"))
 		template = random.choice(profiles)
 		body = fill_template(template)
+
+		# Date profiles should have titles
 		title = generate_title()
 
 		text = "#{}#\n\n{}".format(title, body)
 
-	# Letters templates already contain titles, Love letters should come with a signiture
 	else:
 		profiles = glob.glob(os.path.join("data", "love_letters", "letters", "*.md")) 
 		template = random.choice(profiles)
 		body = fill_template(template)
+
+		# Letters templates already contain titles, instead
+		# love letters should contain a signiture.
 		name = generate_name(first_only=True)
 		name = "<p id='letter-signiture'>{}</p>".format(name)
 
@@ -47,13 +54,15 @@ def generate_letter(type_):
 
 	return {"html": html, "template": template}
 
-def fill_template(template, splice_percentage = 0.85):
+def fill_template(template, splice_percentage=0.85):
 	"""Fill a templated date profile or love letter. Chooses a random number of tokens
 	in the corresponding metadata file and fills the original template with autocompleted
 	results.
 	Args:
-		template (string): path to template file
+		template (str): path to template file
 		splice_percentage (float): percentage of valid queries to pass to autocomplete
+	Returns:
+		str: the filled template
 	"""
 	with open(template) as f:
 		text = f.read()
@@ -78,7 +87,8 @@ def fill_template(template, splice_percentage = 0.85):
 		 # and the result is used to overwrite the original prefix + blank.
 		prefix, blank = utils.split_metadata_token(token)
 
-		prefix = prefix.lower() # cache keys are lowercase (autocomplete is case insensitive)
+		# cache keys are lowercase (autocomplete is case insensitive)
+		prefix = prefix.lower()
 		autocomplete_choices = autocomplete_cache[prefix]
 		if autocomplete_choices:
 			new = random.choice(autocomplete_choices)
@@ -103,8 +113,11 @@ def fill_template(template, splice_percentage = 0.85):
 	return text
 
 def generate_title():
-	"""Generate a random title from title file. Title can be either a listed title as is, or
-	with autocompleted tokens.
+	"""Generate a random title from the title file.
+	Title can either be an original title or a title
+	with autocompleted terms.
+	Returns:
+		str: the generated title
 	"""
 	path_to_titles = os.path.join(utils.BASE, "data", "date_profiles", "titles.json")
 	with open(path_to_titles) as f:
@@ -138,12 +151,14 @@ def generate_title():
 
 	return title
 
-def generate_name(nfirst_names = 1, first_only = False):
+def generate_name(nfirst_names=1, first_only=False):
 	"""Generate a random naming from behindthename.com.
 	Arg:
 		nfirst_names (int): number first names the result should have
 		first_only (boolean): whether only the first name should be returned
-		"""
+	Returns:
+		str: the generated name
+	"""
 
 	# set name parameters,
 	# first + middle + surname

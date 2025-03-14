@@ -1,7 +1,8 @@
 # date-profiler
+A Flask webapp for generating dating profiles based on Google Search autocomplete suggestions. 
+
 https://date-profiler-dot-webhost-common.appspot.com/
 
-A Flask webapp for generating dating profiles based on Google Search autocomplete suggestions. 
 
 ## About
 A set of profile templates from `data/date_profiles` directory with marked phrases to be used as search terms is randomly filled using Google Search autocomplete API http://suggestqueries.google.com/complete/search:

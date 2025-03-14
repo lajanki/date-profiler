@@ -11,10 +11,15 @@ SUGGEST_URL = "http://suggestqueries.google.com/complete/search"
 
 
 def clean_autocomplete_suggestion(suggestion):
-    """Many autocomplete suggestions are queries for movies, song lyrics and other specific
-    items. This removes certain keywords from an API result.
+    """Remove selected keywords from autocomplete suggestions.
+    Autocomplete suggestions often include query terms for movies,
+    song lyrics and other popular search terms.
+    Args:
+        suggestion (str): raw autocomplete suggestion
+    Returns:
+        str: cleaned suggestion
     """
-    # TODO season 7 etc
+    # TODO include multipart terms such as season 7, etc.
     keywords = [
         "lyrics",
         "chords",
@@ -57,8 +62,8 @@ def cleanup_extra_whitespace(s):
     return s
 
 def split_metadata_token(token):
-    """Metadafiles in data/love_letters/metadata and data/date_profiles/metadata consist ;-delimited
-    lines of the form
+    """Metadata files in data/love_letters/metadata and data/date_profiles/metadata
+    consist of ";" delimited lines of the form
         prefix;blank
     Split such a line into the two pieces
     """
@@ -71,8 +76,10 @@ def refresh_and_upload_cache():
     gcs_utils.upload_autocomplete_cache(cache)
 
 def refresh_suggestion_cache():
-    """Refresh autocomplete cache file for every prefixes in metadata files (templates and titles).
-    Performs an API call for every (unqiue) prefix and stores to file.
+    """Refresh the autocomplete cache.
+    Extract prefixes from all metadata files and perform an API call on them.
+    Return:
+        dict: a mapping of the prefixs and the returned suggestions.
     """
     letters = glob.glob("data/love_letters/metadata/*.txt")
     profiles = glob.glob("data/date_profiles/metadata/*.txt")
@@ -107,13 +114,16 @@ def refresh_suggestion_cache():
         query_string = q + " " 
         r = requests.get(SUGGEST_URL, params={"client":"firefox", "q":query_string})
 
-        totals[q] = r.json()[1]  # first item in the response is the original query string, second is the set of suggestions.
-                                 # Also, note that the key is without the trailing space
-
+        # The first item in the response is the original query string, second is the set of suggestions.
+        totals[q] = r.json()[1]  
+                                 
     return totals
 
 def format_sources_to_html():
-    """Get list of sources from the SOURCES file and format as html."""
+    """Read list of sources from the SOURCES file and format as html.
+    Returns:
+        str: html formatted list of sources
+    """
     path_to_sources = os.path.join(BASE, "data", "SOURCES")
     with open(path_to_sources) as f:
         lines = f.readlines()
