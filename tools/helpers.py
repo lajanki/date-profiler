@@ -1,6 +1,4 @@
-# A collection of maintenance related helper functions with a runnable entry point.
-# This script is meant to be run directly and not imported into other modules.
-# For common helper utilities see src/utils.py
+# A collection of maintenance related helper functions with a runnable entrypoint.
 
 
 import json
@@ -32,7 +30,7 @@ def find_invalid(template):
 
 	# open metadata file based on template filename
 	name = os.path.basename(template)
-	name = os.path.splitext(name)[0]  # filename without extension
+	name = os.path.splitext(name)[0]
 
 	template_folder = os.path.dirname(template)
 	metadata_file = os.path.join(template_folder, "..", "metadata", name+".txt")
@@ -41,17 +39,18 @@ def find_invalid(template):
 		metadata = [row for row in f.readlines() if row.strip()]  # exclude empty rows
 		metadata = list(map(str.rstrip, metadata))
 
+	DELIMITER = ";"
 	invalid = []
 	for token in metadata:
 		# does the token contain the delimiter character?
-		if utils.META_DELIM not in token:
+		if DELIMITER not in token:
 			invalid.append(token)
 			continue
 
 		prefix, blank = utils.split_metadata_token(token)
 		substr = "{} {}".format(prefix, blank).strip()  # blank may be empty, in that case strip the extra whitespace
 
-		if substr not in text or utils.META_DELIM in prefix or utils.META_DELIM in blank:
+		if substr not in text or DELIMITER in prefix or DELIMITER in blank:
 			invalid.append(token)
 
 	if invalid:

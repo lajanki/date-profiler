@@ -42,6 +42,22 @@ Then, run in localhost with
 uv run flask --app main:app run
 ```
 
+Request for refreshing the autocomplete suggestion cache can then be sent with `curl`:
+```shell
+curl "127.0.0.1:5000/_refresh" -H "X-Appengine-Cron: 1"
+```
+
+
+### Maintenance tools
+The `tools` folder contains utility scripts for verifying the template profile and letter files:
+
+| command                                              | description                                                        |
+|------------------------------------------------------|--------------------------------------------------------------------|
+| `uv run python -m tools.helpers --find-invalids`     | Find tokens in metadata files not present in the matching template |
+| `uv run python -m tools.helpers --show-prefixes all` | Highlight all prefixes in templates                                |
+|                                                      |                                                                    |
+
+
 ## Unit tests
 Unit tests can be run from the root folder with
 ```shell
