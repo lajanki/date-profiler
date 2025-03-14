@@ -139,7 +139,7 @@ def generate_title():
 	return title
 
 def generate_name(nfirst_names = 1, first_only = False):
-	"""Use requests on http://www.behindthename.com/random/ to generate a name.
+	"""Generate a random naming from behindthename.com.
 	Arg:
 		nfirst_names (int): number first names the result should have
 		first_only (boolean): whether only the first name should be returned
