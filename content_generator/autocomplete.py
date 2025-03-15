@@ -49,7 +49,7 @@ def generate_letter(type_):
 		text = "{}\n\n{}".format(body, name)
 
 	text = utils.cleanup_extra_whitespace(text)
-	html =  markdown.markdown(text.strip())
+	html = markdown.markdown(text.strip())
 	template = os.path.basename(template)
 
 	return {"html": html, "template": template}
@@ -67,7 +67,7 @@ def fill_template(template, splice_percentage=0.85):
 	with open(template) as f:
 		text = f.read()
 
-	# open metadata file based on template filename
+	# read the matching metadata file
 	name = os.path.basename(template)
 	name = os.path.splitext(name)[0]  # filename without extension
 
