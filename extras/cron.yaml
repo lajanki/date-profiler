@@ -1,0 +1,10 @@
+# Reference for App Engine cron configuration.
+# App Engine expects a single cron.yaml file containing scheudling
+# for **all** services.
+# This file should not be deployed as is!
+
+cron:
+- description: "Date profiler: Weekly autocomplete cache refresh"
+  url: /_refresh
+  schedule: every monday 09:00
+  target: date-profiler

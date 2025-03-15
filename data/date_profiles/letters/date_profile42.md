@@ -1,0 +1,5 @@
+My parents always wanted me to be a doctor, but I knew Information Technology was my true calling. I'm way cooler than my geeky friends and way geekier than my cool friends.
+
+I tend to stand out wherever I am. I'm currently helping businesses design websites to get more customers. It's going very, very well. I'm very laid back, fun, and easy to get along with. I have a lot of really interesting friends who make my life all that much better. Some you probably wouldn't talk to, and some who probably wouldn't talk to you.
+
+I learned to play guitar at an early age and ever since playing that first G string, I was hooked. Jazz is my favorite. There's something soothing and deep about it that just speaks to my soul. And you get bonus points if you can sing off tune to my out of tune guitar. I'm cocky. I've worked hard to achieve, learn and become who I am and that's brought me a lot of confidence. I like the me that I am now much better than the old version of me. But don't worry, I don't think I'm better than you. Your amazing girl parts give you triple points from the word 'go'!

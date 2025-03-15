@@ -1,0 +1,5 @@
+Who am I? I’m Spider-Man. Wait, no, that was a movie! I would describe myself as stable in my career and goal-oriented.
+
+I enjoy making people laugh. I am intelligent and can carry on meaningful conversations. I care about other people’s feelings. When I’m with someone special I like being spontaneous, adventurous, romantic, surprising them with little gestures, sensual, playful, and basically having that type of fun you see two people who just met in the movies having! Someone to laugh with, hang out with, be spontaneous with, and have fun with!
+
+I’m looking for someone who has similar qualities and desires someone who they can connect with. I feel there has to be mutual physical attraction for there to be good chemistry between two people. So being fit and having good looks are important, as well as sensuality and affection. Having some similar interests helps–some things I enjoy are fine dining, walking at the beach at night, going dancing, watching movies including foreign films, travelling, going snowboarding, going on day trips to local attractions, having romantic nights at home, cuddling, and basically having a blast together.

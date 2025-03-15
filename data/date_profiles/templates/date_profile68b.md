@@ -1,5 +1,0 @@
-[My dog thinks;I’m pretty awesome ]and [I tend to;agree]. I can make people smile and love to make my friends and family laugh. I am [looking for someone that;I can laugh and enjoy life with]. [I don’t take;myself too seriously ]and I like to [dance like;nobody else is there].
-
-You might be wondering [what is so special about;me]. [Do I own;more than one pair of dress pants]? No. Do I still watch cartoons? Sometimes. And [can I finish;a whole pizza pie in one sitting if I’m hungry enough]? Definitely. [But here’s;the important stuff]. If you are the right person for me, [I will always try;to make you giggle] and feel good about yourself.
-
-But why now? [Why am I on;a dating website]? For one, I am tired of bringing [strangers of the;streets] as my plus ones to social events. And sure, I feel like [I might be;missing out on something] as each of my friends [gets married and;has kids]. So if you think you could settle with someone as goofy as someone like myself, give me a buzz and we can [see where;this goes].

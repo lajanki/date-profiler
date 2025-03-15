@@ -1,0 +1,5 @@
+Hello! My name is Susan, and I enjoy moonlight strolls on the beach, red roses by the armful, and dancing to European beats.
+
+Just kidding! I'm not a fan of any of those things (except the dances... I do a mean Macarena). More seriously, my friends would describe me as easy going, a good listener, a wordplay ninja, and a waffle maker extraordinaire. I'm also a huge football fan, so if you don't mind spending your Sunday mornings and Monday nights yelling obscenities at the television, you should definitely message me. :) One more thing you should know: I have a dog named Tiberius, so you must love golden labs.
+
+You should have a sense of humor (big plus if you laugh at my corny jokes) and be understanding, warm, and intelligent. And a great smile doesn't hurt. ;) I really just want to be in a relationship with my best friend. My ideal guy would be just as comfortable going out to a rowdy pub for a trivia night as he would be spending a Saturday night curled up on the couch watching a good movie.
