@@ -1,5 +1,5 @@
-import json
 import pytest
+import json
 from unittest import mock
 
 from content_generator import utils
