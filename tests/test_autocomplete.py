@@ -2,7 +2,9 @@ from unittest import mock
 from unittest.mock import patch
 from pathlib import Path
 
-from content_generator.autocomplete import get_autocomplete_suggestions, fill_template
+# Mock the global call to read cache from Cloud Storage before importing the module
+with patch("content_generator.gcs_utils.get_cached_autocomplete_suggestions") as mock_get_cache:
+    from content_generator.autocomplete import get_autocomplete_suggestions, fill_template
 
 
 def test_get_autocomplete_suggestions():
