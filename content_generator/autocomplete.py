@@ -5,12 +5,11 @@
 import requests
 import random
 import json
-import glob
-import os.path
 
 import simplejson as json
 import markdown
 from bs4 import BeautifulSoup
+from pathlib import Path
 
 from content_generator import utils, gcs_utils
 
@@ -28,7 +27,7 @@ def generate_letter(type_):
 		dict: a dictionary containing the generated content as html and the template file used.
 	"""
 	if type_ == "date_profile":
-		profiles = glob.glob(os.path.join("data", "date_profiles", "letters", "*.md"))
+		profiles = list(Path("data/date_profiles/letters").glob("*.md"))
 		template = random.choice(profiles)
 		body = fill_template(template)
 
@@ -38,7 +37,7 @@ def generate_letter(type_):
 		text = "#{}#\n\n{}".format(title, body)
 
 	else:
-		profiles = glob.glob(os.path.join("data", "love_letters", "letters", "*.md")) 
+		profiles = list(Path("data/love_letters/letters").glob("*.md"))
 		template = random.choice(profiles)
 		body = fill_template(template)
 
@@ -51,7 +50,7 @@ def generate_letter(type_):
 
 	text = utils.cleanup_extra_whitespace(text)
 	html = markdown.markdown(text.strip())
-	template = os.path.basename(template)
+	template = template.name
 
 	return {"html": html, "template": template}
 
@@ -69,11 +68,10 @@ def fill_template(template, splice_percentage=0.85):
 		text = f.read()
 
 	# read the matching metadata file
-	name = os.path.basename(template)
-	name = os.path.splitext(name)[0]  # filename without extension
+	name = template.stem  # filename without extension
 
-	template_folder = os.path.dirname(template)
-	metadata_file = os.path.join(template_folder, "..", "metadata", name+".txt")
+	template_folder = template.parent
+	metadata_file = template_folder / ".." / "metadata" / f"{name}.txt"
 
 	with open(metadata_file) as f:
 		metadata = [row for row in f.readlines() if row.strip()]
@@ -113,24 +111,24 @@ def fill_template(template, splice_percentage=0.85):
 
 	return text
 
-def get_autocomplete_suggestions(query_strings):
+def get_autocomplete_suggestions(prefixes):
 	"""Get autocomplete suggestions for a list of query strings.
 	Args:
-		query_strings (list): list of strings to get autocomplete suggestions for
+		prefixes (list): list of strings to get autocomplete suggestions for
 	Returns:
 		dict: a mapping of the query strings and the returned suggestions.
 	"""
-	print("Refreshing cache file with {} prefixes".format(len(query_strings)))
+	print("Refreshing cache file with {} prefixes".format(len(prefixes)))
 	totals = {}
-	for q in query_strings:
+	for p in prefixes:
 		# Add a space to ensure the prefixes is fully contained in the resulting suggestions,
 		# ie. "I love to" will also result in suggestions such as "I love you",
 		# Whereas "I love to " keeps to orignal prefix in the response.
-		q = q + " " 
+		q = p + " " 
 		r = requests.get(SUGGEST_URL, params={"client":"firefox", "q":q})
 
 		# The first item in the response is the original query string, second is a list of suggestions.
-		totals[q] = r.json()[1]  
+		totals[p] = r.json()[1]  
 								 
 	return totals
 
@@ -147,7 +145,7 @@ def generate_title():
 	Returns:
 		str: the generated title
 	"""
-	path_to_titles = os.path.join(utils.BASE, "data", "date_profiles", "titles.json")
+	path_to_titles = Path(utils.BASE) / "data" / "date_profiles" / "titles.json"
 	with open(path_to_titles) as f:
 		titles = json.load(f)
 

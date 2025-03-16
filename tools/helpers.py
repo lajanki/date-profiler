@@ -2,20 +2,20 @@
 
 
 import json
-import glob
 import os.path
 import argparse
 
 import pprint
 from termcolor import colored
+from pathlib import Path
 
 from content_generator import utils
 
 
-letter_metadata = glob.glob("data/love_letters/metadata/*.txt")
-letters = glob.glob("data/love_letters/letters/*.md")
-profiles_metadata = glob.glob("data/date_profiles/metadata/*.txt")
-profiles = glob.glob("data/date_profiles/letters/*.md")
+letter_metadata = list(Path("data/love_letters/metadata").glob("*.txt"))
+letters = list(Path("data/love_letters/letters").glob("*.md"))
+profiles_metadata = list(Path("data/date_profiles/metadata").glob("*.txt"))
+profiles = list(Path("data/date_profiles/letters").glob("*.md"))
 
 
 def find_invalid(template):
@@ -29,11 +29,10 @@ def find_invalid(template):
 		text = f.read()
 
 	# open metadata file based on template filename
-	name = os.path.basename(template)
-	name = os.path.splitext(name)[0]
+	name = template.stem
 
-	template_folder = os.path.dirname(template)
-	metadata_file = os.path.join(template_folder, "..", "metadata", name+".txt")
+	template_folder = template.parent
+	metadata_file = template_folder / ".." / "metadata" / f"{name}.txt"
 
 	with open(metadata_file) as f:
 		metadata = [row for row in f.readlines() if row.strip()]  # exclude empty rows
@@ -60,7 +59,7 @@ def find_invalid(template):
 
 def find_invalid_titles():
 	"""Find entries in titles.json with prefix + blank not in title."""
-	path_to_titles = "data/date_profiles/titles.json"
+	path_to_titles = Path("data/date_profiles/titles.json")
 	with open(path_to_titles) as f:
 		titles = json.load(f)
 
@@ -89,10 +88,10 @@ def show_template_prefixes(category="all"):
 		return int("".join(digits))
 		
 	# Sort the files lists, so they're iterated in the same order
-	letter_metadata.sort(key=lambda name: parse_ordinal(name))
-	letters.sort(key=lambda name: parse_ordinal(name))
-	profiles_metadata.sort(key=lambda name: parse_ordinal(name))
-	profiles.sort(key=lambda name: parse_ordinal(name))
+	letter_metadata.sort(key=lambda name: parse_ordinal(name.name))
+	letters.sort(key=lambda name: parse_ordinal(name.name))
+	profiles_metadata.sort(key=lambda name: parse_ordinal(name.name))
+	profiles.sort(key=lambda name: parse_ordinal(name.name))
 
 	# Setup template and metadata files to iterate based on the category input
 	metadata_files = letter_metadata + profiles_metadata
@@ -104,7 +103,7 @@ def show_template_prefixes(category="all"):
 
 	elif category == "love_letters":
 		metadata_files = letter_metadata
-		template = letters
+		template_files = letters
 
 	for idx, metadata_file in enumerate(metadata_files):
 		prefixes = []
@@ -149,8 +148,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.find_invalids:
-        date_profiles = glob.glob(os.path.join("data", "date_profiles", "letters", "*.md"))
-        love_letters = glob.glob(os.path.join("data", "love_letters", "letters", "*.md")) 
+        date_profiles = list(Path("data/date_profiles/letters").glob("*.md"))
+        love_letters = list(Path("data/love_letters/letters").glob("*.md"))
 
         for template in date_profiles + love_letters:
             find_invalid(template)

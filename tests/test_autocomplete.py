@@ -17,6 +17,6 @@ def test_get_autocomplete_suggestions():
             assert params["q"].strip() in query_strings
 
     assert result == {
-        "I love to ": ["suggestion1", "suggestion2"],
-        "How to cook ": ["suggestion1", "suggestion2"],
+        "I love to": ["suggestion1", "suggestion2"],
+        "How to cook": ["suggestion1", "suggestion2"],
     }
