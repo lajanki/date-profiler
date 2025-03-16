@@ -1,9 +1,8 @@
-import pytest
 import json
+import pytest
 from unittest import mock
 
 from content_generator import utils
-
 
 
 def test_keyword_cleanup():
