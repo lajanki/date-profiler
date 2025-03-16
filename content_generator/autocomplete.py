@@ -16,6 +16,7 @@ from content_generator import utils, gcs_utils
 
 
 autocomplete_cache = gcs_utils.get_cached_autocomplete_suggestions()
+SUGGEST_URL = "http://suggestqueries.google.com/complete/search"
 
 
 def generate_letter(type_):
@@ -111,6 +112,33 @@ def fill_template(template, splice_percentage=0.85):
 			text = text.replace(old, new, 1) # in case there are many, replace only the first instance
 
 	return text
+
+def get_autocomplete_suggestions(query_strings):
+	"""Get autocomplete suggestions for a list of query strings.
+	Args:
+		query_strings (list): list of strings to get autocomplete suggestions for
+	Returns:
+		dict: a mapping of the query strings and the returned suggestions.
+	"""
+	print("Refreshing cache file with {} prefixes".format(len(query_strings)))
+	totals = {}
+	for q in query_strings:
+		# Add a space to ensure the prefixes is fully contained in the resulting suggestions,
+		# ie. "I love to" will also result in suggestions such as "I love you",
+		# Whereas "I love to " keeps to orignal prefix in the response.
+		q = q + " " 
+		r = requests.get(SUGGEST_URL, params={"client":"firefox", "q":q})
+
+		# The first item in the response is the original query string, second is a list of suggestions.
+		totals[q] = r.json()[1]  
+								 
+	return totals
+
+def refresh_and_upload_cache():
+	"""Refresh the suggestion cache and upload to Cloud Storage."""
+	prefixes = utils.get_all_prefixes()
+	suggestion_cache = get_autocomplete_suggestions(prefixes)
+	gcs_utils.upload_autocomplete_cache(suggestion_cache)
 
 def generate_title():
 	"""Generate a random title from the title file.
