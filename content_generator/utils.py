@@ -1,10 +1,8 @@
-import os.path
 import json
-import glob
+import pathlib
 
 
-
-BASE = os.path.join(os.path.dirname(__file__), "..")
+BASE = pathlib.Path(__file__).resolve().parent.parent
 
 
 def get_all_prefixes():
@@ -12,9 +10,9 @@ def get_all_prefixes():
     Return:
         dict: list of prefixes
     """
-    letters = glob.glob("data/love_letters/metadata/*.txt")
-    profiles = glob.glob("data/date_profiles/metadata/*.txt")
-    path_to_titles = os.path.join(BASE, "data", "date_profiles", "titles.json")
+    letters = list(BASE.glob("data/love_letters/metadata/*.txt"))
+    profiles = list(BASE.glob("data/date_profiles/metadata/*.txt"))
+    path_to_titles = BASE / "data" / "date_profiles" / "titles.json"
 
     prefixes = []
     # get prefixes from templates
@@ -101,7 +99,8 @@ def format_sources_to_html():
     Returns:
         str: html formatted list of sources
     """
-    path_to_sources = os.path.join(BASE, "data", "SOURCES")
+    path_to_sources = BASE / "data" / "SOURCES"
+
     with open(path_to_sources) as f:
         lines = f.readlines()
 
