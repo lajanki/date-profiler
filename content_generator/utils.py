@@ -1,36 +1,38 @@
-import json
 import pathlib
+import re
 
 
 BASE = pathlib.Path(__file__).resolve().parent.parent
 
 
 def get_all_prefixes():
-    """Get prefixes from all metadata files.
+    """Get prefixes from all replacement metadata files.
     Return:
-        dict: list of prefixes
+        dict: list of unique prefixes
     """
     letters = list(BASE.glob("data/love_letters/metadata/*.txt"))
     profiles = list(BASE.glob("data/date_profiles/metadata/*.txt"))
-    path_to_titles = BASE / "data" / "date_profiles" / "titles.json"
+    path_to_titles = BASE / "data" / "date_profiles" / "titles.txt"
 
     prefixes = []
-    # get prefixes from templates
+    # get prefixes from replacement templates
     for file_ in letters + profiles:
         with open(file_) as f:
-            metadata = [row for row in f.readlines() if row.strip()]  # exclude empty rows
-            lines = list(map(str.rstrip, metadata))
-
-            for token in lines:
-                prefix, _ = split_metadata_token(token)
-                prefixes.append(prefix.lower())
+            extracts = [
+                split_metadata_token(row)[0].lower()
+                for row in f.readlines()
+                if row.strip()
+            ]
+            prefixes.extend(extracts)
 
     # add title prefixes
     with open(path_to_titles) as f:
-        data = json.load(f)["title"]
-
-        for token in data:
-            prefixes.append(token["prefix"].lower())
+        extracts = [
+            extract_tokens_from_brackets(row)[0].lower()
+            for row in f.readlines()
+            if row.strip() and ";" in row
+        ]
+        prefixes.extend(extracts)
 
     return list(set(prefixes))
 
@@ -93,6 +95,18 @@ def split_metadata_token(token):
     """
     split = token.split(";")
     return split[0], split[1].strip()  # ensure no whitespace at the end of stub
+
+def extract_tokens_from_brackets(line):
+    """Extract the prefix part from a string with a [prefix;stub] pattern.
+    Args:
+        line (str): A string that may contain a "[prefix;stub]" pattern
+
+    Returns:
+        str: The extracted prefix
+    """
+    match = re.search(r'\[(.*?);(.*?)\]', line)
+    if match:
+        return match.group(1), match.group(2)
 
 def format_sources_to_html():
     """Read list of sources from the SOURCES file and format as html.

@@ -68,14 +68,11 @@ def fill_template(template, splice_percentage=0.85):
 		text = f.read()
 
 	# read the matching metadata file
-	name = template.stem  # filename without extension
-
 	template_folder = template.parent
-	metadata_file = template_folder / ".." / "metadata" / f"{name}.txt"
+	metadata_file = template_folder / ".." / "metadata" / f"{template.stem}.txt"
 
 	with open(metadata_file) as f:
 		metadata = [row for row in f.readlines() if row.strip()]
-		metadata = list(map(str.rstrip, metadata))
 
 	# randomly choose which tokens in metadata to switch
 	n = int(splice_percentage * len(metadata))
@@ -145,27 +142,38 @@ def generate_title():
 	Returns:
 		str: the generated title
 	"""
-	path_to_titles = Path(utils.BASE) / "data" / "date_profiles" / "titles.json"
+	path_to_titles = Path(utils.BASE) / "data" / "date_profiles" / "titles.txt"
 	with open(path_to_titles) as f:
-		titles = json.load(f)
+		template_title = random.choice(f.readlines()).strip()
 
-	token = random.choice(titles["title"])
+		# remove the markup characters
+		replacements = {
+			"[": "",
+			"]": "",
+			";": " "
+		}
+		title = template_title.translate(str.maketrans(replacements))
 
-	# Randomly choose to either an existing orignal title or autocomplete it
-	if random.random() <= 0.7 and token["prefix"]:
-		query_string = token["prefix"].lower()
-		autocomplete_choices = autocomplete_cache[query_string]
-		new = random.choice(autocomplete_choices)
-		new = utils.clean_autocomplete_suggestion(new)
-		old = "{} {}".format(token["prefix"], token["stub"])
 
-		title = token["title"].replace(old, new)
-	else:
-		title = token["title"]
+	# Randomly choose to either use the title as is, or autocomplete
+	# it (assuming it contains a prefix to replace).
+	if ";" not in template_title:
+		return title
+
+	if random.random() > 0.85:
+		return title
+
+	prefix, stub = utils.extract_tokens_from_brackets(template_title)
+	autocomplete_choices = autocomplete_cache[prefix.lower()]
+	new = random.choice(autocomplete_choices)
+	new = utils.clean_autocomplete_suggestion(new)
+	old = f"[{prefix};{stub}]"
+
+	title = title.replace(old, new)
 
 	capitalized = title.title()
 	# The str.title method also capitalizes any character after a single quote '.
-	# Manually fix these by cheking if the previous character was asingle quote:
+	# Manually fix these by cheking if the previous character was a single quote:
 	chars = []
 	for i, char in enumerate(capitalized):
 		if i > 0 and capitalized[i-1] in ("'", "`"):
@@ -174,7 +182,6 @@ def generate_title():
 			chars.append(char)
 
 	title = "".join(chars)
-
 	return title
 
 def generate_name(nfirst_names=1, first_only=False):

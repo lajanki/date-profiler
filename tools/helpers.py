@@ -55,22 +55,6 @@ def find_invalid(template):
 		print("Found the following invalid entries:")
 		pprint.pprint(invalid)
 
-def find_invalid_titles():
-	"""Find entries in titles.json with prefix + blank not in title."""
-	path_to_titles = Path("data/date_profiles/titles.json")
-	with open(path_to_titles) as f:
-		titles = json.load(f)
-
-	invalid = []
-	for token in titles["title"]:
-		substr = "{} {}".format(token["prefix"], token["stub"]).strip()
-		if not substr in token["title"] and substr != " ":
-			invalid.append(token)
-
-	if invalid:
-		print("Found the following invalid titles:")
-		pprint.pprint(invalid)
-
 def show_template_prefixes(category="all"):
 	"""Print a colored visualization of each letter and profile template with
 	prefixes highlighted in red similar to grep.
@@ -151,8 +135,6 @@ if __name__ == "__main__":
 
         for template in date_profiles + love_letters:
             find_invalid(template)
-
-        find_invalid_titles()
 
     elif args.show_prefixes:
         show_template_prefixes(args.show_prefixes)
