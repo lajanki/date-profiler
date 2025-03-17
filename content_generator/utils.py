@@ -1,14 +1,38 @@
-import os.path
 import json
-import glob
-import requests
-
-from content_generator import gcs_utils
+import pathlib
 
 
-BASE = os.path.join(os.path.dirname(__file__), "..")
-SUGGEST_URL = "http://suggestqueries.google.com/complete/search"
+BASE = pathlib.Path(__file__).resolve().parent.parent
 
+
+def get_all_prefixes():
+    """Get prefixes from all metadata files.
+    Return:
+        dict: list of prefixes
+    """
+    letters = list(BASE.glob("data/love_letters/metadata/*.txt"))
+    profiles = list(BASE.glob("data/date_profiles/metadata/*.txt"))
+    path_to_titles = BASE / "data" / "date_profiles" / "titles.json"
+
+    prefixes = []
+    # get prefixes from templates
+    for file_ in letters + profiles:
+        with open(file_) as f:
+            metadata = [row for row in f.readlines() if row.strip()]  # exclude empty rows
+            lines = list(map(str.rstrip, metadata))
+
+            for token in lines:
+                prefix, _ = split_metadata_token(token)
+                prefixes.append(prefix.lower())
+
+    # add title prefixes
+    with open(path_to_titles) as f:
+        data = json.load(f)["title"]
+
+        for token in data:
+            prefixes.append(token["prefix"].lower())
+
+    return list(set(prefixes))
 
 def clean_autocomplete_suggestion(suggestion):
     """Remove selected keywords from autocomplete suggestions.
@@ -70,61 +94,13 @@ def split_metadata_token(token):
     split = token.split(";")
     return split[0], split[1].strip()  # ensure no whitespace at the end of blank
 
-def refresh_and_upload_cache():
-    """Refresh the suggestion cache and upload to Cloud Storage."""
-    cache = refresh_suggestion_cache()
-    gcs_utils.upload_autocomplete_cache(cache)
-
-def refresh_suggestion_cache():
-    """Refresh the autocomplete cache.
-    Extract prefixes from all metadata files and perform an API call on them.
-    Return:
-        dict: a mapping of the prefixs and the returned suggestions.
-    """
-    letters = glob.glob("data/love_letters/metadata/*.txt")
-    profiles = glob.glob("data/date_profiles/metadata/*.txt")
-    path_to_titles = os.path.join(BASE, "data", "date_profiles", "titles.json")
-
-    prefixes = []
-    # get prefixes from templates
-    for file_ in letters + profiles:
-        with open(file_) as f:
-            metadata = [row for row in f.readlines() if row.strip()]  # exclude empty rows
-            lines = list(map(str.rstrip, metadata))
-
-            for token in lines:
-                prefix, _ = split_metadata_token(token)
-                prefixes.append(prefix.lower())
-
-    # add title prefixes
-    with open(path_to_titles) as f:
-        data = json.load(f)["title"]
-
-        for token in data:
-            prefixes.append(token["prefix"].lower())
-
-    prefixes = list(set(prefixes))
-
-    print("Refreshing cache file with {} prefixes".format(len(prefixes)))   
-    totals = {}
-    for q in prefixes:
-        # Add a space to ensure the prefixes is fully contained in the resulting suggestions,
-        # ie. "I love to" will also result in suggestions such as "I love you",
-        # Whereas "I love to " keeps to orignal prefix in the response.
-        query_string = q + " " 
-        r = requests.get(SUGGEST_URL, params={"client":"firefox", "q":query_string})
-
-        # The first item in the response is the original query string, second is the set of suggestions.
-        totals[q] = r.json()[1]  
-                                 
-    return totals
-
 def format_sources_to_html():
     """Read list of sources from the SOURCES file and format as html.
     Returns:
         str: html formatted list of sources
     """
-    path_to_sources = os.path.join(BASE, "data", "SOURCES")
+    path_to_sources = BASE / "data" / "SOURCES"
+
     with open(path_to_sources) as f:
         lines = f.readlines()
 

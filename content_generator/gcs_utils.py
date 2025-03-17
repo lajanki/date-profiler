@@ -33,5 +33,5 @@ def upload_autocomplete_cache(cache):
     client = storage.Client()
     bucket = client.get_bucket(os.environ["GCS_BUCKET"])
     blob = bucket.get_blob(os.environ["GCS_CACHE_FILE"])
+    print(f"Uploading to {blob.bucket.name}/{blob.name}")
     blob.upload_from_string(json.dumps(cache))
-
