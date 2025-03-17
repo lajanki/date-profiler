@@ -1,15 +1,12 @@
 # Fills date profile and love letter templates in data/ with random Google Search's autocomplete suggestions.
-# Valid query strings to pass to the autocomplete API are stored in json files in the metadata directory.
 
 
 import requests
 import random
-import json
+from pathlib import Path
 
-import simplejson as json
 import markdown
 from bs4 import BeautifulSoup
-from pathlib import Path
 
 from content_generator import utils, gcs_utils
 
