@@ -5,7 +5,7 @@ from flask import (
     abort
 )
 
-from content_generator import autocomplete, utils
+from content_generator import autocomplete
 
 
 app = Flask(__name__)
@@ -31,7 +31,7 @@ def refresh_suggestion_cache():
     # (The X- headers are stripped by App Engine when they originate from external sources)
     # https://cloud.google.com/appengine/docs/flexible/nodejs/scheduling-jobs-with-cron-yaml
     if "X-Appengine-Cron" in request.headers:
-        utils.refresh_and_upload_cache()
+        autocomplete.refresh_and_upload_cache()
         return "OK", 200
 
     abort(500)
