@@ -64,11 +64,11 @@ def cleanup_extra_whitespace(s):
 def split_metadata_token(token):
     """Metadata files in data/love_letters/metadata and data/date_profiles/metadata
     consist of ";" delimited lines of the form
-        prefix;blank
+        prefix;stub
     Split such a line into the two pieces
     """
     split = token.split(";")
-    return split[0], split[1].strip()  # ensure no whitespace at the end of blank
+    return split[0], split[1].strip()  # ensure no whitespace at the end of stub
 
 def refresh_and_upload_cache():
     """Refresh the suggestion cache and upload to Cloud Storage."""

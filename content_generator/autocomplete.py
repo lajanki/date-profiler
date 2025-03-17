@@ -83,9 +83,9 @@ def fill_template(template, splice_percentage=0.85):
 	query_tokens = random.sample(metadata, n)
 	
 	for token in query_tokens:
-		 # Tokens are lines of the form "prefix;blank" where prefix is passed to the API
-		 # and the result is used to overwrite the original prefix + blank.
-		prefix, blank = utils.split_metadata_token(token)
+		 # Tokens are lines of the form "prefix;stub" where prefix is passed to the API
+		 # and the result is used to overwrite the original prefix + stub.
+		prefix, stub = utils.split_metadata_token(token)
 
 		# cache keys are lowercase (autocomplete is case insensitive)
 		prefix = prefix.lower()
@@ -104,7 +104,7 @@ def fill_template(template, splice_percentage=0.85):
 				new = new.capitalize()
 
 			# Replace the full token with the autocompleted result
-			old = "{} {}".format(prefix, blank).strip()  # blank may be empty, in that case strip the extra whitespace
+			old = "{} {}".format(prefix, stub).strip()  # stub may be empty, in that case strip the extra whitespace
 
 			# Set markdown bolding for the replacing autocomplete suggestion
 			new = "**{}**".format(new)
@@ -131,7 +131,7 @@ def generate_title():
 		autocomplete_choices = autocomplete_cache[query_string]
 		new = random.choice(autocomplete_choices)
 		new = utils.clean_autocomplete_suggestion(new)
-		old = "{} {}".format(token["prefix"], token["blank"])
+		old = "{} {}".format(token["prefix"], token["stub"])
 
 		title = token["title"].replace(old, new)
 	else:
