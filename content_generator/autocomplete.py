@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 
 from content_generator import utils, gcs_utils
+from content_generator.env_config import FILE_ENUMERATE_PATTERN
 
 
 autocomplete_cache = gcs_utils.get_cached_autocomplete_suggestions()
@@ -27,7 +28,7 @@ def generate_letter(type_):
 		dict: a dictionary containing the generated content as html and the template file used.
 	"""
 	if type_ == "date_profile":
-		profiles = list(Path("data/date_profiles/letters").glob("*.md"))
+		profiles = list(Path("data/date_profiles/letters").glob(f"{FILE_ENUMERATE_PATTERN}.md"))
 		template = random.choice(profiles)
 		body = fill_template(template)
 
@@ -37,7 +38,7 @@ def generate_letter(type_):
 		text = "#{}#\n\n{}".format(title, body)
 
 	else:
-		profiles = list(Path("data/love_letters/letters").glob("*.md"))
+		profiles = list(Path("data/love_letters/letters").glob(f"{FILE_ENUMERATE_PATTERN}.md"))
 		template = random.choice(profiles)
 		body = fill_template(template)
 
@@ -134,7 +135,7 @@ def get_autocomplete_suggestions(prefixes):
 
 def refresh_and_upload_cache():
 	"""Refresh the suggestion cache and upload to Cloud Storage."""
-	prefixes = utils.get_all_prefixes()
+	prefixes = utils.get_metadata_prefixes()
 	suggestion_cache = get_autocomplete_suggestions(prefixes)
 	gcs_utils.upload_autocomplete_cache(suggestion_cache)
 

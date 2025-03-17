@@ -1,17 +1,19 @@
 import json
 import pathlib
 
+from content_generator.env_config import FILE_ENUMERATE_PATTERN
+
 
 BASE = pathlib.Path(__file__).resolve().parent.parent
 
 
-def get_all_prefixes():
+def get_metadata_prefixes():
     """Get prefixes from all metadata files.
     Return:
         dict: list of prefixes
     """
-    letters = list(BASE.glob("data/love_letters/metadata/*.txt"))
-    profiles = list(BASE.glob("data/date_profiles/metadata/*.txt"))
+    letters = list(BASE.glob(f"data/love_letters/metadata/{FILE_ENUMERATE_PATTERN}.txt"))
+    profiles = list(BASE.glob(f"data/date_profiles/metadata/{FILE_ENUMERATE_PATTERN}.txt"))
     path_to_titles = BASE / "data" / "date_profiles" / "titles.json"
 
     prefixes = []
