@@ -29,10 +29,8 @@ def find_invalid(template):
 		text = f.read()
 
 	# open metadata file based on template filename
-	name = template.stem
-
 	template_folder = template.parent
-	metadata_file = template_folder / ".." / "metadata" / f"{name}.txt"
+	metadata_file = template_folder / ".." / "metadata" / f"{template.stem}.txt"
 
 	with open(metadata_file) as f:
 		metadata = [row for row in f.readlines() if row.strip()]  # exclude empty rows
@@ -77,7 +75,7 @@ def show_template_prefixes(category="all"):
 	"""Print a colored visualization of each letter and profile template with
 	prefixes highlighted in red similar to grep.
 	"""
-	# TODO: how to handle overlapping prefixes
+	# TODO: handle overlapping prefixes
 	def parse_ordinal(filename):
 		"""Custom key function for sorting the list of metadata and letter files:
 		parses the numerical value from the filename to an int.
@@ -87,11 +85,11 @@ def show_template_prefixes(category="all"):
 		digits = [c for c in filename if c.isdigit()]
 		return int("".join(digits))
 		
-	# Sort the files lists, so they're iterated in the same order
-	letter_metadata.sort(key=lambda name: parse_ordinal(name.name))
-	letters.sort(key=lambda name: parse_ordinal(name.name))
-	profiles_metadata.sort(key=lambda name: parse_ordinal(name.name))
-	profiles.sort(key=lambda name: parse_ordinal(name.name))
+	# Sort the file lists, so they're iterated in the same order
+	letter_metadata.sort(key=lambda path: parse_ordinal(path.name))
+	letters.sort(key=lambda path: parse_ordinal(path.name))
+	profiles_metadata.sort(key=lambda path: parse_ordinal(path.name))
+	profiles.sort(key=lambda path: parse_ordinal(path.name))
 
 	# Setup template and metadata files to iterate based on the category input
 	metadata_files = letter_metadata + profiles_metadata
