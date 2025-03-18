@@ -2,9 +2,18 @@ from unittest import mock
 from unittest.mock import patch
 from pathlib import Path
 
+import pytest
+
 # Mock the global call to read cache from Cloud Storage before importing the module
-with patch("content_generator.gcs_utils.get_cached_autocomplete_suggestions") as mock_get_cache:
-    from content_generator.autocomplete import get_autocomplete_suggestions, fill_template
+with patch(
+    "content_generator.gcs_utils.get_cached_autocomplete_suggestions"
+) as mock_get_cache:
+    from content_generator.autocomplete import (
+        get_autocomplete_suggestions,
+        fill_template,
+    )
+
+from content_generator.utils import extract_tokens_from_brackets
 
 
 def test_get_autocomplete_suggestions():
@@ -48,3 +57,16 @@ def test_fill_template():
 
     expected_result = "This is a sample template with **suggestion1** and **suggestion2**."
     assert result == expected_result
+
+@pytest.mark.parametrize(
+        "template,expected",
+        [
+            ("Some title", None),
+            ("A [Better;Title]", ("Better", "Title")),
+            ("take me for a [new;ride] next week", ("new", "ride")),
+            ("[The Finer;Things]", ("The Finer", "Things")),
+        ]
+    )
+def test_extract_tokens_from_brackets(template, expected):
+    """Test title component extraction for [prefox;stub] format."""
+    assert extract_tokens_from_brackets(template) == expected

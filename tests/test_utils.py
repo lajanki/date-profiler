@@ -32,21 +32,14 @@ def mock_filesystem(tmp_path):
     tmp_data_dir = tmp_path / "data"
     love_letters_metadata = tmp_data_dir / "love_letters" / "metadata"
     date_profiles_metadata = tmp_data_dir / "date_profiles" / "metadata"
-    titles_json_path = tmp_data_dir / "date_profiles" / "titles.json"
+    titles_path = tmp_data_dir / "date_profiles" / "titles.txt"
 
     love_letters_metadata.mkdir(parents=True)
     date_profiles_metadata.mkdir(parents=True)
 
     (love_letters_metadata / "letter1.txt").write_text("prefix1;some data\nprefix2;some other data")
     (date_profiles_metadata / "profile1.txt").write_text("prefix3;data\nprefix4;other data")
-
-    titles_json = {
-        "title": [
-            {"prefix": "prefix5"},
-            {"prefix": "prefix6"}
-        ]
-    }
-    titles_json_path.write_text(json.dumps(titles_json))
+    titles_path.write_text("[prefix5;stub]\nAll [prefix6;stub]\nAll the things")
 
     return tmp_path
 

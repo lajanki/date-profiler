@@ -20,8 +20,8 @@ profiles = list(Path("data/date_profiles/letters").glob("*.md"))
 
 def find_invalid(template):
 	"""Find invalid entries in the metadata file for a given letter template:
-	 * entries where prefix + blank is not in the template
-	 * entries containing the delimiter character ; in either the prefix or blank
+	 * entries where prefix + stub is not in the template
+	 * entries containing the delimiter character ; in either the prefix or stub
 	Arg:
 		template (string): path to template file
 	"""
@@ -44,31 +44,15 @@ def find_invalid(template):
 			invalid.append(token)
 			continue
 
-		prefix, blank = utils.split_metadata_token(token)
-		substr = "{} {}".format(prefix, blank).strip()  # blank may be empty, in that case strip the extra whitespace
+		prefix, stub = utils.split_metadata_token(token)
+		substr = "{} {}".format(prefix, stub).strip()  # stub may be empty, in that case strip the extra whitespace
 
-		if substr not in text or DELIMITER in prefix or DELIMITER in blank:
+		if substr not in text or DELIMITER in prefix or DELIMITER in stub:
 			invalid.append(token)
 
 	if invalid:
 		print(os.path.basename(template))
 		print("Found the following invalid entries:")
-		pprint.pprint(invalid)
-
-def find_invalid_titles():
-	"""Find entries in titles.json with prefix + blank not in title."""
-	path_to_titles = Path("data/date_profiles/titles.json")
-	with open(path_to_titles) as f:
-		titles = json.load(f)
-
-	invalid = []
-	for token in titles["title"]:
-		substr = "{} {}".format(token["prefix"], token["blank"]).strip()
-		if not substr in token["title"] and substr != " ":
-			invalid.append(token)
-
-	if invalid:
-		print("Found the following invalid titles:")
 		pprint.pprint(invalid)
 
 def show_template_prefixes(category="all"):
@@ -151,8 +135,6 @@ if __name__ == "__main__":
 
         for template in date_profiles + love_letters:
             find_invalid(template)
-
-        find_invalid_titles()
 
     elif args.show_prefixes:
         show_template_prefixes(args.show_prefixes)
