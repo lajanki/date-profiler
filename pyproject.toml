@@ -1,6 +1,6 @@
 [project]
 name = "date-profiler"
-version = "0.1.0"
+version = "0.2.0"
 description = "Webapp for dating profiles created using Google search autocomplete"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -11,7 +11,6 @@ dependencies = [
     "gunicorn>=23.0.0",
     "markdown>=3.7",
     "python-dotenv>=1.0.1",
-    "simplejson>=3.20.1",
     "termcolor>=2.5.0",
 ]
 
