@@ -1,6 +1,6 @@
 [project]
 name = "date-profiler"
-version = "0.2.0"
+version = "0.3.0"
 description = "Webapp for dating profiles created using Google search autocomplete"
 readme = "README.md"
 requires-python = ">=3.12"

@@ -1,5 +1,4 @@
 import pytest
-import json
 from unittest import mock
 
 from content_generator import utils
@@ -44,9 +43,9 @@ def mock_filesystem(tmp_path):
     return tmp_path
 
 
-def test_get_all_prefixes(mock_filesystem):
+def test_get_metadata_prefixes(mock_filesystem):
     """Are all prefixes from metadata files returned?"""
     with mock.patch("content_generator.utils.BASE", mock_filesystem):
-        prefixes = utils.get_all_prefixes()
+        prefixes = utils.get_metadata_prefixes()
         expected_prefixes = {"prefix1", "prefix2", "prefix3", "prefix4", "prefix5", "prefix6"}
         assert set(prefixes) == expected_prefixes
