@@ -37,10 +37,17 @@
 					var category = (text == "Date profiles" ? "date_profile" : "love_letter");
 					setDescription(category);
 				});
-				$("#nav-option-profile").on("click", function() {setDescription("date_profile")} );
-			  	$("#nav-option-letter").on("click", function() {setDescription("love_letter")} );
-			});
+				$("#nav-option-profile").on("click", function() {
+					setDescription("date_profile");
+					$(".card-body").css("background-color", "#93a3ef26");
+				});
+			  	$("#nav-option-letter").on("click", function() {
+					setDescription("love_letter");
+					$(".card-body").css("background-color", "#ffedce");
+				});
+            });
 
+			
 			function setDescription(type) {
 				$.ajax({
 					beforeSend: function(request) {
@@ -74,11 +81,32 @@
 			<div class="row">
 				<!-- left margin -->
 				<div class="hidden-xs col-md-2" id="left-margin">
-					<img class="sidebar" src="./static/img/letter_example.png" style="margin-bottom:5px; width:100%">
-					<img class="sidebar" src="./static/img/arrow.png" style="margin-left:33%; margin-bottom:10px">
-					<img class="sidebar" src="./static/img/google_search.png" style="margin-bottom:10px; width:100%">
-					<img class="sidebar" src="./static/img/arrow.png" style="margin-left:33%; margin-bottom:10px">
-					<img class="sidebar" src="./static/img/letter_example_finished.png" width="100%">
+					<div class="process-container">
+						<div class="process-step">
+							<div class="process-content">
+								<img src="./static/img/profile_base_with_icon.png" alt="Original template">
+								<p>Template</p>
+							</div>
+						</div>
+						<div class="process-connector">
+							<i class="arrow-down"></i>
+						</div>
+						<div class="process-step">
+							<div class="process-content">
+								<img src="./static/img/google_search_up_in.png" alt="Google autocomplete">
+								<p>Google autocomplete</p>
+							</div>
+						</div>
+						<div class="process-connector">
+							<i class="arrow-down"></i>
+						</div>
+						<div class="process-step">	
+							<div class="process-content">
+								<img src="./static/img/profile_filled_with_icon.png" alt="Final result">
+								<p>Result</p>
+							</div>
+						</div>
+					</div>
 				</div>
 	
 	
@@ -101,7 +129,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Other</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="https://game-descriptor-dot-webhost-common.appspot.com/"><img src="./static/img/joystick_small.png">Videogame descriptor</a>
+								<a class="dropdown-item" href="https://game-descriptor-dot-webhost-common.appspot.com/"><img src="./static/img/icons/joystick_small.png">Videogame descriptor</a>
 							</div>
 						</li>
 					</ul>
@@ -165,9 +193,18 @@
 	
 				<!-- right margin -->
 				<div class="hidden-xs col-md-2" id="right-margin">
-					<img class="sidebar" src="./static/img/heart_balloon_letter.png" width="60%">
-					<img class="sidebar" src="./static/img/heart_letter.png" width="60%">
-					
+					<div class="image-showcase">
+						<div class="showcase-item">
+							<div class="showcase-content">
+								<img src="./static/img/heart_balloon_letter.png" alt="Heart balloon">
+							</div>
+						</div>
+						<div class="showcase-item">
+							<div class="showcase-content">
+								<img src="./static/img/heart_letter.png" alt="Heart letter">
+							</div>
+						</div>
+					</div>
 				</div>
 	
 			<!-- row -->
