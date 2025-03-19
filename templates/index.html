@@ -37,10 +37,17 @@
 					var category = (text == "Date profiles" ? "date_profile" : "love_letter");
 					setDescription(category);
 				});
-				$("#nav-option-profile").on("click", function() {setDescription("date_profile")} );
-			  	$("#nav-option-letter").on("click", function() {setDescription("love_letter")} );
-			});
+				$("#nav-option-profile").on("click", function() {
+					setDescription("date_profile");
+					$(".card-body").css("background-color", "#93a3ef26");
+				});
+			  	$("#nav-option-letter").on("click", function() {
+					setDescription("love_letter");
+					$(".card-body").css("background-color", "#ffedce");
+				});
+            });
 
+			
 			function setDescription(type) {
 				$.ajax({
 					beforeSend: function(request) {
